@@ -4,6 +4,7 @@
     <Style TargetType="local:HamburgerMenuItem">
         <Setter Property="Background"
                 Value="Transparent" />
+        <!-- TODO -->
         <Setter Property="Foreground"
                 Value="#FFFFFF" />
         <Setter Property="BorderBrush"
@@ -18,6 +19,8 @@
                 Value="Top" />
         <Setter Property="FontSize"
                 Value="18" />
+        <Setter Property="HorizontalContentAlignment"
+                Value="Left" />
         <Setter Property="Height"
                 Value="48" />
         <Setter Property="Template">
@@ -40,7 +43,8 @@
                                                                        Storyboard.TargetProperty="Background">
                                             <DiscreteObjectKeyFrame KeyTime="0:0:0">
                                                 <DiscreteObjectKeyFrame.Value>
-                                                    <SolidColorBrush Opacity="0.26"
+                                                    <!-- TODO -->
+                                                    <SolidColorBrush Opacity="0.12"
                                                                      Color="#FFFFFF" />
                                                 </DiscreteObjectKeyFrame.Value>
                                             </DiscreteObjectKeyFrame>
@@ -53,6 +57,7 @@
                                                                        Storyboard.TargetProperty="Background">
                                             <DiscreteObjectKeyFrame KeyTime="0:0:0">
                                                 <DiscreteObjectKeyFrame.Value>
+                                                    <!-- TODO -->
                                                     <SolidColorBrush Opacity="0.26"
                                                                      Color="#FFFFFF" />
                                                 </DiscreteObjectKeyFrame.Value>
@@ -60,16 +65,39 @@
                                         </ObjectAnimationUsingKeyFrames>
                                     </Storyboard>
                                 </VisualState>
-                                <VisualState x:Name="Disabled" />
+                                <VisualState x:Name="Disabled">
+                                    <Storyboard>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="IconContentPresenter"
+                                                                       Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <!-- TODO -->
+                                                    <SolidColorBrush Color="#61000000" />
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="TextBlock"
+                                                                       Storyboard.TargetProperty="Foreground">
+                                            <DiscreteObjectKeyFrame KeyTime="0:0:0">
+                                                <DiscreteObjectKeyFrame.Value>
+                                                    <!-- TODO -->
+                                                    <SolidColorBrush Color="#61000000" />
+                                                </DiscreteObjectKeyFrame.Value>
+                                            </DiscreteObjectKeyFrame>
+                                        </ObjectAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </VisualState>
                             </VisualStateGroup>
                         </VisualStateManager.VisualStateGroups>
                         <Grid x:Name="PART_IconGrid"
                               Grid.Column="0">
-                            <ContentPresenter VerticalContentAlignment="Center"
+                            <ContentPresenter x:Name="IconContentPresenter"
+                                              VerticalContentAlignment="Center"
                                               AutomationProperties.AccessibilityView="Raw"
                                               Content="{TemplateBinding Icon}" />
                         </Grid>
-                        <TextBlock Grid.Column="1"
+                        <TextBlock x:Name="TextBlock"
+                                   Grid.Column="1"
                                    HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
                                    VerticalAlignment="Center"
                                    Padding="{TemplateBinding Padding}"
